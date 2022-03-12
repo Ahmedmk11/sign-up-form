@@ -4,6 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="scripts/script.js" defer></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
         <link rel="stylesheet" href="styles/style.css" />
         <title>Sign Up!</title>
     
@@ -11,16 +15,14 @@
     
     <body>
 
-        <button class="theme-toggle">Toggle Theme</button>
-
-
+        <div class="theme-toggle"></div>
 
         <div class="main">
             
 
 
             <div class="strip">
-                <img class="image">
+                <div class="image"></div>
                 <h1>The Empire</h1>
             </div>
 
@@ -58,7 +60,8 @@
                             </div>
                             <div class="grid-pass">
                                 <label for="user_password">Password</label>
-                                <input type="password" id="user_password" name="password" placeholder="Password" minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required>
+                                <input oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('*Your password should contain at least 8 characters, one letter, one number and one special character')" type="password" id="user_password" name="password" placeholder="Password" minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required>
+                                <p class="tip"></p>
                             </div>
                             <div class="grid-birth">
                                 <label for="birthDate">Birth Date</label>
@@ -332,6 +335,13 @@
                             <div class="grid-city">
                                 <label for="city">City</label>
                                 <input type="text" id="city" placeholder="City" required>
+                            </div>
+                        </div>
+
+                        <div class="grid-container3">
+                            <div class="grid-planet">
+                                <label for="planet">Planet</label>
+                                <input type="text" id="planet" placeholder="Planet" required>
                             </div>
                         </div>
                         

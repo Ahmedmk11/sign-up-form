@@ -3,21 +3,40 @@ html,body
     width: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden; 
 }
 
 :root.light {
     --background: url("../images/lightbackground.jpeg");
     --text-color: black;
-    --form-background:rgb(245, 245, 245) ;
-
+    --form-background:rgb(245, 245, 245);
+    --icon-link: url('../images/lighticon.png');
+    --theme-icon:url('../images/moon.png');
 }
+
 
 :root.dark { 
     --background: url("../images/darkbackground.jpeg");
     --text-color: white;
     --form-background: rgb(48, 48, 48);/*  #580606; */
+    --icon-link: url('../images/darkicon.png');
+    --theme-icon:url('../images/sun.png');
+    
+}
 
+.image:after {
+    content: var(--icon-link);
+}
+
+.theme-toggle:after {
+    content: var(--theme-icon);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
 }
 
 select:invalid:focus, input:invalid:focus {
@@ -39,8 +58,10 @@ footer {
 }
 
 body {
+    font-family: 'Open Sans', sans-serif;
     text-align: center;
     background: var(--background);
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100%;
@@ -67,6 +88,7 @@ button {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 button:hover {
@@ -86,6 +108,12 @@ a:visited {
     color: var(--text-color);
 }
 
+.theme-toggle {
+    top: 2%;
+    left: 2%;
+    position: absolute;
+}
+
 .main {
     flex:0 1 auto;
     display: flex;
@@ -102,6 +130,10 @@ a:visited {
 }
 
 .strip {
+    margin-bottom: 262px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 55%;
     text-align: center;
     background-color: rgba(160, 160, 160, 0.646);
@@ -114,7 +146,7 @@ a:visited {
 } 
 
 .form {
-    height: 700px;
+    height: 850px;
     display: flex;
     flex-direction: column;
     /* justify-content: space-around; */
@@ -143,8 +175,9 @@ a:visited {
     min-width: fit-content;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-areas:
+    ". . ." 
     "First Mid Last"
     ". . .";
 }
@@ -157,12 +190,25 @@ a:visited {
     min-width: fit-content;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: 
     "Email Pass"
     "Birth Gender"
-    "Count City"
-    ". .";
+    "Count City";
+}
+
+.grid-container3 {
+    align-content: center;
+    width: 100%;
+    column-gap: 30px;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-areas: 
+    ". . ."
+    ". Planet ."
+    ". . .";
 }
 
 .grid-birth {
@@ -200,3 +246,8 @@ a:visited {
 .grid-pass {
     grid-area: Pass;
 }
+
+.grid-planet {
+    grid-area: Planet;
+}
+
